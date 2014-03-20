@@ -1,0 +1,28 @@
+{
+    "name": "misaret/nomos-phalcon",
+    "description": "Nomos Storage PHP library for Phalcon",
+	"keywords": ["nomos", "phalcon"],
+	"homepage": "https://github.com/misaret/nomos-phalcon",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vitalii Khranivskyi",
+            "email": "misaret@gmail.com"
+        }
+    ],
+    "require": {
+		"php": ">=5.4.0",
+		"misaret/nomos-php": "dev-master"
+    },
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/misaret/nomos-php"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"misaret\\Phalcon\\": ""
+		}
+	}
+}
