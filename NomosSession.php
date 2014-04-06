@@ -24,14 +24,20 @@ class NomosSession extends Adapter implements AdapterInterface
      */
     public function __construct($options = null)
     {
-		if (!isset($options['storage']))
+		if (!isset($options['storage'])) {
 			throw new Exception("Parameter 'storage' is required");
-		if (!isset($options['level']))
+		}
+		if (!isset($options['level'])) {
 			throw new Exception("Parameter 'level' is required");
-		if (!isset($options['subLevel']))
+		}
+		if (!isset($options['subLevel'])) {
 			$options['subLevel'] = 0;
+		}
+		if (empty($options['lifetime'])) {
+			$options['lifetime'] = null;
+		}
 
-		$handler = new Session($options['storage'], $options['level'], $options['subLevel'], @$options['lifetime']);
+		$handler = new Session($options['storage'], $options['level'], $options['subLevel'], $options['lifetime']);
 
 		session_set_save_handler($handler);
 

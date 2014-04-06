@@ -27,8 +27,9 @@ class NomosStorage extends \misaret\nomos\Storage implements \Phalcon\Events\Eve
 
 	protected function _fireEvent($eventName)
 	{
-		if ($this->_eventsManager)
+		if ($this->_eventsManager) {
 			$this->_eventsManager->fire('nomos:' . $eventName, $this);
+		}
 
 		return parent::_fireEvent($eventName);
 	}

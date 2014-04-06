@@ -33,13 +33,16 @@ class NomosCacheBackend extends Backend implements BackendInterface
 	 */
 	public function __construct(FrontendInterface $frontend, array $options)
 	{
-		if (!isset($options['storage']))
+		if (!isset($options['storage'])) {
 			throw new Exception("Parameter 'storage' is required");
+		}
 		$this->_storage = $options['storage'];
-		if (!isset($options['level']))
+		if (!isset($options['level'])) {
 			throw new Exception("Parameter 'level' is required");
-		if (!isset($options['subLevel']))
+		}
+		if (!isset($options['subLevel'])) {
 			$options['subLevel'] = 0;
+		}
 
 		parent::__construct($frontend, $options);
 	}
@@ -57,8 +60,9 @@ class NomosCacheBackend extends Backend implements BackendInterface
 		$key = Storage::buildKey($keyName);
 
 		$value = $this->_storage->get($options['level'], $options['subLevel'], $key, (int) $lifetime);
-		if ($value === false)
+		if ($value === false) {
 			return null;
+		}
 
 		$frontend = $this->getFrontend();
 
@@ -99,7 +103,12 @@ class NomosCacheBackend extends Backend implements BackendInterface
 		}
 
 		$options = $this->getOptions();
-		$this->_storage->put($options['level'], $options['subLevel'], $lastKey, $lifetime, $frontend->beforeStore($content));
+		$result = $this->_storage->put(
+			$options['level'], $options['subLevel'], $lastKey, $lifetime, $frontend->beforeStore($content)
+		);
+		if (!$result) {
+			throw new Exception('Cannot save to Nomos');
+		}
 
 		$isBuffering = $frontend->isBuffering();
 
@@ -152,5 +161,17 @@ class NomosCacheBackend extends Backend implements BackendInterface
 		$options = $this->getOptions();
 
 		return $this->_storage->get($options['level'], $options['subLevel'], $keyName);
+	}
+
+	/**
+	 * {@inheritdoc}
+	 *
+	 * @return boolean
+	 */
+	public function flush()
+	{
+		// TODO: not realised yet
+
+		return false;
 	}
 }
