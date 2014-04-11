@@ -11,7 +11,6 @@ namespace misaret\Phalcon;
 use Phalcon\Session\Adapter;
 use Phalcon\Session\AdapterInterface;
 use Phalcon\Session\Exception;
-use misaret\nomos\Session;
 
 /**
  * Nomos Storage adapter for Phalcon\Session
@@ -37,7 +36,7 @@ class NomosSession extends Adapter implements AdapterInterface
 			$options['lifetime'] = null;
 		}
 
-		$handler = new Session($options['storage'], $options['level'], $options['subLevel'], $options['lifetime']);
+		$handler = new \misaret\nomos\Session($options['storage'], $options['level'], $options['subLevel'], $options['lifetime']);
 
 		session_set_save_handler($handler);
 
