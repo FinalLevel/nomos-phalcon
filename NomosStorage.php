@@ -1,17 +1,17 @@
 <?php
 /**
- * @link https://github.com/misaret/nomos-phalcon/
+ * @link https://github.com/FinalLevel/nomos-phalcon/
  * @copyright Copyright (c) 2014 Vitalii Khranivskyi
  * @author Vitalii Khranivskyi <misaret@gmail.com>
  * @license LICENSE file
  */
 
-namespace misaret\Phalcon;
+namespace fl\Phalcon;
 
 /**
  * Nomos Storage for Phalcon
  */
-class NomosStorage extends \misaret\nomos\Storage implements \Phalcon\Events\EventsAwareInterface
+class NomosStorage extends \fl\nomos\Storage implements \Phalcon\Events\EventsAwareInterface
 {
     protected $_eventsManager;
 

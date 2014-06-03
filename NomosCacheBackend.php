@@ -1,14 +1,14 @@
 <?php
 /**
- * @link https://github.com/misaret/nomos-phalcon/
+ * @link https://github.com/FinalLevel/nomos-phalcon/
  * @copyright Copyright (c) 2014 Vitalii Khranivskyi
  * @author Vitalii Khranivskyi <misaret@gmail.com>
  * @license LICENSE file
  */
 
-namespace misaret\Phalcon;
+namespace fl\Phalcon;
 
-use misaret\nomos\Storage;
+use fl\nomos\Storage;
 use Phalcon\Cache\Backend;
 use Phalcon\Cache\BackendInterface;
 use Phalcon\Cache\FrontendInterface;
@@ -20,7 +20,7 @@ use Phalcon\Cache\Exception;
 class NomosCacheBackend extends Backend implements BackendInterface
 {
 	/**
-	 * @var \misaret\nomos\Storage
+	 * @var \fl\nomos\Storage
 	 */
 	private $_storage;
 

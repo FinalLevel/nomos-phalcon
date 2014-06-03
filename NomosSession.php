@@ -1,12 +1,12 @@
 <?php
 /**
- * @link https://github.com/misaret/nomos-phalcon/
+ * @link https://github.com/FinalLevel/nomos-phalcon/
  * @copyright Copyright (c) 2014 Vitalii Khranivskyi
  * @author Vitalii Khranivskyi <misaret@gmail.com>
  * @license LICENSE file
  */
 
-namespace misaret\Phalcon;
+namespace fl\Phalcon;
 
 use Phalcon\Session\Adapter;
 use Phalcon\Session\AdapterInterface;
@@ -36,7 +36,7 @@ class NomosSession extends Adapter implements AdapterInterface
 			$options['lifetime'] = null;
 		}
 
-		$handler = new \misaret\nomos\Session($options['storage'], $options['level'], $options['subLevel'], $options['lifetime']);
+		$handler = new \fl\nomos\Session($options['storage'], $options['level'], $options['subLevel'], $options['lifetime']);
 
 		session_set_save_handler($handler);
 
